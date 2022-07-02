@@ -1,0 +1,42 @@
+.img {
+  top: 2rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.imgTextInput {
+  border: none;
+  cursor: default;
+  display: block;
+  margin: 0;
+  opacity: 0;
+  outline: none;
+  padding: 0;
+  pointer-events: none;
+  position: fixed;
+  resize: none;
+  z-index: -1;
+}
+
+.imgText {
+  display: block;
+  padding: 1rem;
+  position: absolute;
+  bottom: 2rem;
+  background: none;
+  font-size: 2rem;
+  border: none;
+  font-weight: bolder;
+  text-shadow: 0 0 4px black, 0 0 4px black, 0 0 4px black, 0 0 4px black,
+    0 0 4px black;
+  color: white;
+}
+
+.imgText::selection {
+  background-color: rgb(249, 228, 151);
+}

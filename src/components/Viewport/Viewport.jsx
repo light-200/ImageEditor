@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { exportComponentAsJPEG } from "react-component-export-image";
 import Menu from "../Menu/Menu";
+import Image from "../Image/Image";
 
 import "./Viewport.css";
 
 function Viewport() {
   const image = useRef(null);
-  const imgText = useRef(null);
-  const imgTextInput = useRef(null);
   const [imgUrl, setImgUrl] = useState("");
-  const [text, setText] = useState("");
+  const [color, setcolor] = useState("");
+  const [showImg, setShowImg] = useState(true);
 
   const getImage = async () => {
     console.log("get image called");
@@ -25,87 +25,44 @@ function Viewport() {
   };
 
   useEffect(() => {
-    dragElement(image.current);
     getImage();
   }, []);
 
-  function dragElement(elmnt) {
-    var pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
+  function getColor(color) {
+    console.log("getColor called");
+    setcolor(color);
+  }
 
-    elmnt.onmousedown = dragMouseDown;
-
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // get the mouse cursor position at startup:
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
-      document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // calculate the new cursor position:
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      // set the element's new position:
-      elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-      elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-    }
-
-    function closeDragElement() {
-      // stop moving when mouse button is released:
-      document.onmouseup = null;
-      document.onmousemove = null;
-    }
+  function setVisibility() {
+    console.log("visibility changed");
+    setShowImg(!showImg);
   }
 
   function download() {
     console.log("download called");
-    exportComponentAsJPEG(image);
+    let imageName = new Date().getMilliseconds();
+    exportComponentAsJPEG(image, { fileName: imageName });
   }
-
-  const imgStyle = {
-    width: `800px`,
-    height: `800px`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundImage: `url(${imgUrl})`,
-  };
 
   console.log("viewport rendered");
 
   return (
     <>
       <div className="Viewport">
-        <div
-          className="img"
+        <Image
+          imgUrl={imgUrl}
+          showImg={showImg}
+          color={color}
           ref={image}
-          style={imgStyle}
-          onClick={() => imgTextInput.current.focus()}
-        >
-          <input
-            className="imgTextInput"
-            ref={imgTextInput}
-            value={text}
-            onChange={(e) => {
-              setText(e.target.value);
-            }}
-          ></input>
-          <div className="imgText" ref={imgText}>
-            {text}
-          </div>
-        </div>
+        ></Image>
       </div>
-      <Menu handleDownload={download} handleImage={getImage}></Menu>
+      <Menu
+        handleDownload={download}
+        handleImage={getImage}
+        handleVisibilty={setVisibility}
+        handleColor={getColor}
+        showImg={showImg}
+      ></Menu>
     </>
   );
 }

@@ -1,8 +1,10 @@
 .Menu {
   height: 6vh;
   width: min(500px, 40vw);
+  min-width: 300px;
   padding: 0.5rem;
   border: solid 2px rgba(0, 0, 0, 0.5);
+  background-color: #e9e9e5;
 
   display: flex;
   align-items: center;
@@ -11,6 +13,13 @@
   user-select: none;
   position: absolute;
   bottom: 4vh;
+}
+
+.palette {
+  position: absolute;
+  bottom: 150%;
+  left: 40%;
+  transform: translateX(-50%);
 }
 
 .btn {
@@ -22,4 +31,10 @@
 .btn:active {
   transform: scale(0.9, 0.9);
   opacity: 0.8;
+}
+
+@media only screen and (max-width: 600px) {
+  .Menu {
+    bottom: 2vh;
+  }
 }
