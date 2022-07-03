@@ -27,7 +27,12 @@ function Menu(props) {
     <div className="Menu">
       <img className="btn" src={imgicon} onClick={props.handleVisibilty} />
       <div className="paletteHolder" onClick={handleColorPicker}>
-        {showColorPicker && <Colorpicker onColorSelect={onColorSelect} />}
+        {showColorPicker && (
+          <Colorpicker
+            onColorSelect={onColorSelect}
+            defaultColor={props.defaultColor}
+          />
+        )}
         <img className="btn" src={paletteicon} />
       </div>
       <img

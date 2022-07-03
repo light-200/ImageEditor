@@ -35,6 +35,7 @@
 
 @media only screen and (max-width: 600px) {
   .Menu {
-    bottom: 2vh;
+    position: relative;
+    bottom: 0;
   }
 }

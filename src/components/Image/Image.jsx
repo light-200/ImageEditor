@@ -1,5 +1,6 @@
 import { useRef, useState, forwardRef } from "react";
 import "./Image.css";
+
 function Image({ imgUrl, color, showImg }, ref) {
   const imgTextInput = useRef(null);
   const imgText = useRef(null);
@@ -9,19 +10,24 @@ function Image({ imgUrl, color, showImg }, ref) {
 
   const imgStyle = {
     width: `800px`,
+    maxWidth: "95vw",
     height: `800px`,
+    maxHeight: "95vh",
   };
 
-  const bg = showImg
-    ? {
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${imgUrl})`,
-      }
-    : {
-        background: color,
-      };
+  let bg = {};
+  if (showImg) {
+    bg = {
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundImage: `url(${imgUrl})`,
+    };
+  } else {
+    bg = {
+      background: color,
+    };
+  }
 
   const imgMove = {
     cursor: imgMoveTool ? "grab" : "initial",

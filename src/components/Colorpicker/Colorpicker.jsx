@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ChromePicker } from "react-color";
 
-function Colorpicker({ onColorSelect }) {
-  const [color, setColor] = useState("#fff");
+function Colorpicker({ onColorSelect, defaultColor }) {
+  const [color, setColor] = useState(defaultColor);
   const handleOnChange = (color) => {
     setColor(color.hex);
   };

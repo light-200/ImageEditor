@@ -8,7 +8,7 @@ import "./Viewport.css";
 function Viewport() {
   const image = useRef(null);
   const [imgUrl, setImgUrl] = useState("");
-  const [color, setcolor] = useState("");
+  const [color, setcolor] = useState("#fff");
   const [showImg, setShowImg] = useState(true);
 
   const getImage = async () => {
@@ -61,6 +61,7 @@ function Viewport() {
         handleImage={getImage}
         handleVisibilty={setVisibility}
         handleColor={getColor}
+        defaultColor={color}
         showImg={showImg}
       ></Menu>
     </>
