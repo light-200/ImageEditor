@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function Menu(props) {
   const [showColorPicker, setShowColorPicker] = useState(false);
-  console.log("menu rendered");
+  // console.log("menu rendered");
 
   const disable = {
     opacity: 0.2,
