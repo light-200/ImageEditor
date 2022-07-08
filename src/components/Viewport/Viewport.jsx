@@ -44,7 +44,7 @@ function Viewport() {
     exportComponentAsJPEG(image, { fileName: imageName });
   }
 
-  console.log("viewport rendered");
+  // console.log("viewport rendered");
 
   return (
     <>
