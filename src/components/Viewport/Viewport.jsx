@@ -15,13 +15,12 @@ function Viewport() {
     console.log("get image called");
     setImgUrl(" ");
     const url = "https://source.unsplash.com/400x400/?asthetic";
-    await fetch(url)
-      .then((data) => {
-        setImgUrl(data.url);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const data = await fetch(url);
+      setImgUrl(data.url);
+    } catch (error) {
+      console.log("⚠️ error:", error.message);
+    }
   };
 
   useEffect(() => {

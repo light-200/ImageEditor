@@ -26,6 +26,8 @@
   display: block;
   padding: 2px;
   cursor: pointer;
+  width: 25px;
+  height: 25px;
 }
 
 .btn:active {
