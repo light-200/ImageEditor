@@ -4,9 +4,6 @@ import { Tooltip } from "../Tooltip/Tooltip";
 export const ImgText = forwardRef(({ text, setText }, ref) => {
   const [textMoveTool, setTextMoveTool] = useState(false);
   const [hideTooltip, setHideTooltip] = useState(false);
-  const textMove = {
-    cursor: textMoveTool ? "grab" : "initial",
-  };
 
   function handleMove() {
     setTextMoveTool(!textMoveTool);
@@ -66,8 +63,7 @@ export const ImgText = forwardRef(({ text, setText }, ref) => {
   return (
     <>
       <div
-        className="imgText"
-        style={textMove}
+        className={`imgText ${textMoveTool ? "grab" : ""}`}
         ref={ref}
         onClick={handleTooltip}
       >

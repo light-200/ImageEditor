@@ -9,9 +9,7 @@ function Image({ imgUrl, color, showImg, imgHeight, imgWidth }, ref) {
 
   const imgStyle = {
     width: `${imgWidth}px`,
-    maxWidth: "95vw",
     height: `${imgHeight}px`,
-    maxHeight: "95vh",
   };
 
   let bg = {};
