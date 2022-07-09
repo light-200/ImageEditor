@@ -2,15 +2,15 @@ import { useRef, useState, forwardRef, useEffect } from "react";
 import { ImgText } from "../ImageText/ImgText";
 import "./Image.css";
 
-function Image({ imgUrl, color, showImg }, ref) {
+function Image({ imgUrl, color, showImg, imgHeight, imgWidth }, ref) {
   const imgTextInput = useRef(null);
   const imgText = useRef(null);
   const [text, setText] = useState("");
 
   const imgStyle = {
-    width: `800px`,
+    width: `${imgWidth}px`,
     maxWidth: "95vw",
-    height: `800px`,
+    height: `${imgHeight}px`,
     maxHeight: "95vh",
   };
 
@@ -33,10 +33,11 @@ function Image({ imgUrl, color, showImg }, ref) {
   return (
     <div
       className="img"
+      style={imgStyle}
       ref={ref}
-      style={{ ...imgStyle, ...bg }}
       onClick={() => imgTextInput.current.focus()}
     >
+      {imgUrl != " " ? <img src={imgUrl} alt="image" style={bg} /> : null}
       <input
         className="imgTextInput"
         ref={imgTextInput}

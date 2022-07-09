@@ -10,9 +10,10 @@ function Viewport() {
   const [imgUrl, setImgUrl] = useState("");
   const [color, setcolor] = useState("#fff");
   const [showImg, setShowImg] = useState(true);
+  const [imgData, setImgData] = useState({ height: 800, width: 800 });
 
   const getImage = async () => {
-    console.log("get image called");
+    // console.log("get image called");
     setImgUrl(" ");
     const url = "https://source.unsplash.com/400x400/?asthetic";
     try {
@@ -53,6 +54,8 @@ function Viewport() {
           showImg={showImg}
           color={color}
           ref={image}
+          imgHeight={imgData.height}
+          imgWidth={imgData.width}
         ></Image>
       </div>
       <Menu
